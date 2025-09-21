@@ -163,7 +163,7 @@ void exec_builtin(char **token, int cmd)
 	   		perror("cmd");
 	   	}
 	   	break;
-	   	case2:
+		case 2:
 	   	printf("will come out in future ig");
 	   	break;
 	   	default:
@@ -175,8 +175,13 @@ void sls(char **token)
 {
 	printf("custom 'ls' command; not yet written yet);
 }
-/*👇calling ai won't work unless you have llama.cpp with deepseek 13B model installed in your device */
-/*void exec_ai(char **input)
+/*calling ai won't work unless you have llama.cpp with deepseek 13B model installed in your device. 👇This down here is a dummy function*/
+void exec_ai(char **input)
+{
+	printf(".......!!!");
+}
+/*👇The actual function
+void exec_ai(char **input)
 {
 	struct termios orig_termios;
 	tcgetattr(STDIN_FILENO, &orig_termios);
@@ -220,8 +225,6 @@ void sls(char **token)
 		pclose(fp);
 		tcsetattr(STDIN_FILENO, TCSANOW, &orig_termios);
 	}
-
-
 }*/
 
 void exec_append_out(char *pre_operator, char *post_operator)
