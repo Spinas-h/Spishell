@@ -178,7 +178,7 @@ void sls(char **token)
 /*calling ai won't work unless you have llama.cpp with deepseek 13B model installed in your device. 👇This down here is a dummy function*/
 void exec_ai(char **input)
 {
-	printf(".......!!!");
+	printf("Sorry you need to install llama.cpp and Deepseek 13B which you better don't\n");
 }
 /*👇The actual function
 void exec_ai(char **input)
