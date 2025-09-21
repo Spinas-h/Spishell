@@ -173,7 +173,7 @@ void exec_builtin(char **token, int cmd)
 
 void sls(char **token)
 {
-	printf("custom 'ls' command; I'll write it in the future");
+	printf("custom 'ls' command; not yet written yet);
 }
 /*👇calling ai won't work unless you have llama.cpp in your device and deepseek 13B in your device */
 /*void exec_ai(char **input)
