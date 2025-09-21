@@ -20,4 +20,4 @@ uninstall:
 	sudo rm -f /usr/local/bin/$(TARGET)
 
 clean:
-	rm -f $(OBJ) $(TARGET) explain each line for me also what's this code called is it a bashscript???
+	rm -f $(OBJ) $(TARGET) 
