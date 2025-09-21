@@ -15,6 +15,7 @@ char buffer[1024];
 int len=0;
 char *cwd;
 int cursor=0;
+int redir_position;
 
 void refresh_prompt_with(const char *buf) {
 	printf("\33[2K\r");
@@ -251,12 +252,14 @@ int main()
 			save_history(input);
 
 		char pre_input[500], post_input[500];
+		char *red1 = strchr(input, '>');
 		char *red2 = strstr(input, ">>");
 		char *red3 = strchr(input, '<');
+		char *red4 = strstr(input, "<<");
 
 		if(red2!=NULL)
 		{
-			int redir_position=red2 - input;
+			redir_position=red2 - input;
 			strncpy(pre_input, input, redir_position);
 			pre_input[redir_position]='\0';
 			strcpy(post_input, red2+2);
@@ -267,16 +270,25 @@ int main()
 		}
 		else if(red3!=NULL)
 		{
-			int redir_pos=red3-input;
-			strncpy(pre_input, input, redir_pos);
-			pre_input[redir_pos]='\0';
+			redir_position=red3-input;
+			strncpy(pre_input, input, redir_position);
+			pre_input[redir_position]='\0';
 			strcpy(post_input, red3+1);
 			while(post_input[0]==' ')
 				memmove(post_input, post_input+1, strlen(post_input));
 
 			exec_input_redir(pre_input, post_input);
 		}
-		else if(strchr(input, '|')==NULL)
+		else if(red1!=NULL)
+		{
+			redir_position=red1-input;
+
+		}
+		else if(red4!=NULL)
+		{
+
+		}
+		if(strchr(input, '|')==NULL)
 		{
 			execute(input);
 		}
