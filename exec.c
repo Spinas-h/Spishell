@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <termios.h>
 
 void parse_pipe_command(char *, char**);
 void parent_process(pid_t pid);
@@ -174,9 +175,11 @@ void sls(char **token)
 {
 	printf("custom 'ls' command; I'll write it in the future");
 }
-
-void exec_ai(char **input)
+/*👇calling ai won't work unless you have llama.cpp in your device and deepseek 13B in your device */
+/*void exec_ai(char **input)
 {
+	struct termios orig_termios;
+	tcgetattr(STDIN_FILENO, &orig_termios);
 	char prompt[1024]="";
 	int i=1;
 	pid_t pid=fork();
@@ -186,22 +189,22 @@ void exec_ai(char **input)
 	}
 	else if(pid==0)
 	{
-	
+
 		while(input[i]!=NULL)
 		{
 			strcat(prompt, input[i]);
-			
+
 			strcat(prompt, " ");
-			
+
 			i++;
 		}
 		prompt[strlen(prompt) - 1]='\0';
 		int len=strlen(prompt);
 		char command[1500];
 		snprintf(command, sizeof(command),   "./llama.cpp/build/bin/llama-cli "
-	    "-m ./llama.cpp/models/deepseek/deepseek-coder-1.3b-instruct-Q4_K_M.gguf "  /* snprintf helps to format the string here by inserting the prompt into the llama.cpp call */
+	    "-m ./llama.cpp/models/deepseek/deepseek-coder-1.3b-instruct-Q4_K_M.gguf " 
 	    "-p \"Answer briefly: %s\" 2>/dev/null", prompt);
-		
+
 
 		FILE *fp=popen(command, "r");
 		if(fp==NULL)
@@ -215,13 +218,11 @@ void exec_ai(char **input)
 			printf("%s", buffer);
 		}
 		pclose(fp);
+		tcsetattr(STDIN_FILENO, TCSANOW, &orig_termios);
 	}
-	else
-	{
-		waitpid(pid, NULL, 0);
-	}
-	
-}
+
+
+}*/
 
 void exec_append_out(char *pre_operator, char *post_operator)
 {
@@ -288,8 +289,8 @@ void exec_input_redir(char *pre_operator, char *post_operator)
 
 
 
-	   		
-	   	
-	   
+
+
+
 
 
