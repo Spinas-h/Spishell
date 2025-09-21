@@ -211,8 +211,13 @@ void print_history()
 	}
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    if (argc > 1 && strcmp(argv[1], "--version") == 0) 
+	{
+        printf("spishell version %s\n", VERSION);
+        return 0;
+    }
 	load_history();
 	history_index=history_count;
 
