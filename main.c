@@ -22,7 +22,7 @@ void refresh_prompt_with(const char *buf) {
 	char *cwd = getcwd(NULL, 0);
 	char *last = strrchr(cwd, '/');
 	last = (last != NULL) ? last + 1 : cwd;
-	printf(YELLOW "📘%s" CYAN "🐚spi➤" C_RESET, last);
+	printf(YELLOW "📘%s" CYAN "🐚spi➤ " C_RESET, last);
 	printf("%s", buf);
 	fflush(stdout);
 	free(cwd);
@@ -95,7 +95,7 @@ char *read_input()
 				char *cwd = getcwd(NULL, 0);
 				char *last = strrchr(cwd, '/');
 				last = (last != NULL) ? last + 1 : cwd;
-				printf(YELLOW "📘%s" CYAN "🐚spi➤" C_RESET, last);
+				printf(YELLOW "📘%s" CYAN "🐚spi➤ " C_RESET, last);
 				printf("%s", buffer);
 
 				for(int i = len; i > cursor; i--)
@@ -211,8 +211,13 @@ void print_history()
 	}
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    if (argc > 1 && strcmp(argv[1], "--version") == 0) 
+	{
+        printf("spishell version %s\n", VERSION);
+        return 0;
+    }
 	load_history();
 	history_index=history_count;
 
@@ -221,7 +226,7 @@ int main()
 		cwd=getcwd(NULL, 0);
 		char *last = strrchr(cwd, '/');
 		last = (last != NULL) ? last + 1 : cwd;
-		printf( YELLOW "📘%s" CYAN "🐚spi➤" C_RESET, last);
+		printf( YELLOW "📘%s" CYAN "🐚spi➤ " C_RESET, last);
 		fflush(stdout);
 
 		char *input=read_input();
