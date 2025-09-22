@@ -211,13 +211,8 @@ void print_history()
 	}
 }
 
-int main(int argc, char *argv[])
+int main()
 {
-    if (argc > 1 && strcmp(argv[1], "--version") == 0) 
-	{
-        printf("spishell version %s\n", VERSION);
-        return 0;
-    }
 	load_history();
 	history_index=history_count;
 
@@ -240,6 +235,7 @@ int main(int argc, char *argv[])
 
 		history_index=history_count;
 
+
 		if(strcmp(input,"exit")==0)
 		{
 			free(input);
@@ -260,7 +256,6 @@ int main(int argc, char *argv[])
 		char *red1 = strchr(input, '>');
 		char *red2 = strstr(input, ">>");
 		char *red3 = strchr(input, '<');
-		char *red4 = strstr(input, "<<");
 
 		if(red2!=NULL)
 		{
@@ -289,10 +284,7 @@ int main(int argc, char *argv[])
 			redir_position=red1-input;
 
 		}
-		else if(red4!=NULL)
-		{
 
-		}
 		if(strchr(input, '|')==NULL)
 		{
 			execute(input);
