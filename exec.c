@@ -258,6 +258,43 @@ void exec_append_out(char *pre_operator, char *post_operator)
 	}			
 }
 
+void exec_out_redir(char *pre_operator, char *post_operator)
+{
+
+	char *file=strtok(post_operator, " ");
+
+	int fd=open(file,O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if(fd<0)
+	{
+		perror("failed opening file");
+		return;
+	}
+	pid_t pid=fork();
+	if(pid<0)
+	{
+		perror("fork failed");
+		return;
+	}
+	else if (pid==0)
+	{
+		fflush(stdout);
+		dup2(fd, STDOUT_FILENO);
+		close(fd);
+		char *token[100];
+		parse_pipe_command(pre_operator, token);
+		execvp(token[0], token);
+		perror("failed");
+		_exit(1);
+	}
+	else
+	{
+		close(fd);
+		waitpid(pid, NULL, 0);
+	}
+
+}
+
+
 void exec_input_redir(char *pre_operator, char *post_operator)
 {
 	char *file=strtok(post_operator, " ");
@@ -265,7 +302,7 @@ void exec_input_redir(char *pre_operator, char *post_operator)
 	if(fd<0)	
 	{
 		perror("failed opening the file");
-		exit(1);
+		return;
 	}
 	pid_t pid=fork();
 	if(pid<0)
