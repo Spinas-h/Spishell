@@ -211,13 +211,8 @@ void print_history()
 	}
 }
 
-int main(int argc, char *argv[])
+int main()
 {
-    if (argc > 1 && strcmp(argv[1], "--version") == 0) 
-	{
-        printf("spishell version %s\n", VERSION);
-        return 0;
-    }
 	load_history();
 	history_index=history_count;
 
@@ -258,9 +253,9 @@ int main(int argc, char *argv[])
 			save_history(input);
 
 		char pre_input[500], post_input[500];
-		char *red1 = strchr(input, '>');
+		char *red1 = strchr(input, '<');
 		char *red2 = strstr(input, ">>");
-		char *red3 = strchr(input, '<');
+		char *red3 = strchr(input, '>');
 
 		if(red2!=NULL)
 		{
@@ -270,7 +265,6 @@ int main(int argc, char *argv[])
 			strcpy(post_input, red2+2);
 			while(post_input[0]==' ')
 				memmove(post_input, post_input+1, strlen(post_input));
-
 			exec_append_out(pre_input, post_input);
 		}
 		else if(red3!=NULL)
@@ -281,16 +275,21 @@ int main(int argc, char *argv[])
 			strcpy(post_input, red3+1);
 			while(post_input[0]==' ')
 				memmove(post_input, post_input+1, strlen(post_input));
-
-			exec_input_redir(pre_input, post_input);
+			exec_out_redir(pre_input, post_input);
 		}
 		else if(red1!=NULL)
 		{
 			redir_position=red1-input;
+			strncpy(pre_input,input,redir_position);
+			pre_input[redir_position]='\0';
+			strcpy(post_input,red1+1);
+			while(post_input[0]==' ')
+				memmove(post_input,post_input+1,strlen(post_input));
+			exec_input_redir(pre_input, post_input);
 
 		}
 
-		if(strchr(input, '|')==NULL)
+		else if(strchr(input, '|')==NULL)
 		{
 			execute(input);
 		}
