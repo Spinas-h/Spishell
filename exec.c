@@ -68,6 +68,8 @@ void execute(char *input)
 	else if(pid==0)
 	{
 		execvp(token[0], token);
+		perror("error");
+		exit(1);
 	}
 																								
 	else
