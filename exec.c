@@ -34,6 +34,7 @@ void execute(char *input)
 		}
 		token[i]=NULL;
 		exec_ai(token);
+		return;
 		
 	}
 		
@@ -179,6 +180,7 @@ void sls(char **token)
 void exec_ai(char **input)
 {
 	printf("Sorry you need to install llama.cpp and Deepseek 13B which you better don't\n");
+	return;
 }
 /*👇The actual function
 void exec_ai(char **input)
