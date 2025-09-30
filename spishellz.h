@@ -5,6 +5,7 @@ void execute(char *input);
 void exec_pipe(char *pre_pipe, char *post_pipe);
 void exec_append_out(char *pre_operator, char *post_operator);
 void exec_input_redir(char *pre_operator, char *post_operator);
+void exec_out_redir(char *pre_operator, char *post_operator);
 
 #define MAX_HISTORY 1000
 #define DIR_COLOR "\033[1;34m"
