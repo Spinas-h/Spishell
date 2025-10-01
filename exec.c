@@ -67,8 +67,7 @@ void execute(char *input)
 	
 	else if(pid==0)
 	{
-		execvp(token[0], token);
-		if(perror)
+		if(execvp(token[0], token)<0)
 		{
 			printf("Looks like a typo, no such command\n");
 			exit(1);
