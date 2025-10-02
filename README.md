@@ -1,10 +1,10 @@
 Spishell is a custom Unix-like shell built in C 
 Here's what Spishell can do:
-	*Foreground and background process execution with fork() and execvp()
-	*I/O redirection(<,>,>>)
-	*Pipes(|)
-	*navigate through command history
-	*call local ai model
+	-Foreground and background process execution with fork() and execvp()
+	-I/O redirection(<,>,>>)
+	-Pipes(|)
+	-Navigate through command history
+	-Call local ai model
 
 Setup
 1. Just clone the repo on your Unix-like OS
