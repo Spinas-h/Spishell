@@ -6,7 +6,7 @@ Here's what Spishell can do:
   *navigate through command history
   *call local ai model
 
-How to setup
+Setup
 1. Just clone the repo on your Unix-like OS
    <img width="808" height="128" alt="Screenshot From 2025-10-02 08-34-57" src="https://github.com/user-attachments/assets/85325d5f-f186-4b4a-aff5-fec65e83bbe7" />
 2. run make install
