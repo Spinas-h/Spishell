@@ -13,7 +13,7 @@ How to setup
 3. type in 'spishell --version' to check if you are good to go
    <img width="808" height="128" alt="Screenshot From 2025-10-02 08-38-55" src="https://github.com/user-attachments/assets/04e484bd-304a-4ddd-aa47-b3ccf49757e0" />
 5. call it
-     <img width="808" height="128" alt="Screenshot From 2025-10-02 08-39-55" src="https://github.com/user-attachments/assets/fc0dc68c-406a-4ea0-8829-9961e7770090" />
+   <img width="808" height="128" alt="Screenshot From 2025-10-02 08-39-55" src="https://github.com/user-attachments/assets/fc0dc68c-406a-4ea0-8829-9961e7770090" />
 
 
 
