@@ -10,7 +10,7 @@ Spishell is a custom Unix-like shell built in C
 
 ## Setup
 
-1. Just clone the repo on your Unix-like OS
+1. Clone the repo on your Unix-like OS
    <img width="808" height="128" alt="Screenshot From 2025-10-02 08-34-57" src="https://github.com/user-attachments/assets/85325d5f-f186-4b4a-aff5-fec65e83bbe7" />
 2. Move into the Spishell directory
    <img width="821" height="107" alt="Screenshot From 2025-10-02 08-48-24" src="https://github.com/user-attachments/assets/f31fd1fd-1bf1-4f12-9bd4-dcc7130a0f17" />
